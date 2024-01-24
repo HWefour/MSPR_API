@@ -1,5 +1,5 @@
 const routers = require("express").Router();
-const settingControllers = require("../Controllers/SettigsControllers");
+const settingControllers = require("../Controllers/SettingsControllers");
 
 
 routers.get("/:id" , settingControllers.getInfoAccount);
