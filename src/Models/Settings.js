@@ -2,14 +2,14 @@ const knex = require("../Config/Knex");
 
 async function getInfoAccount(id) {
     return knex 
-    .select("*")
+    .select("*")                             // add the body params
     .from("users")
     .where('idUser' , id)
 };
 
 async function deleteAccount(id){
     return knex 
-    .delete("*")
+    .delete("*")                             // add the body params
     .from("users")
     .where("idUser" , id)
 };
@@ -18,7 +18,7 @@ async function editInfoAccount(id){
     return knex 
     .update(
         "firstName",
-        "lastName",
+        "lastName",                           // add the body params
         "userName",
         "city"
     )
