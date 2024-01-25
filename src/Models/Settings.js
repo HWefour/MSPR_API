@@ -19,7 +19,7 @@ async function deleteAccount(id){
         .transaction(async (trx) => {
             await trx("users")
                 .where("users.idUser", id)
-                .del();
+                .del();                                                 // en cas de suppression de l'utilisateur on supprime les annonces lié a lui
 
             await trx("advertisement")
                 .where("advertisement.idUser", id)
