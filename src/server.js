@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const HomeRoute = require("./Routes/HomeRoute")
 const ProfileRoute = require("./Routes/ProfileRoutes");
-const SettingsRoute = require("./Routes/Settings");
+const SettingsRoute = require("./Routes/SettingsRoute");
 
 
 
