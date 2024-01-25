@@ -25,7 +25,7 @@ exports.deleteAccount = async (req , res)=> {
 exports.editInfoAccount = async (req , res)=> {
     id = req.params.id;
     try {
-        const settings = await editInfoAccount(id);
+        const settings = await editInfoAccount(id , req.body);
         res.status(20).json(settings);                              // add the body params
     }catch(err){
         res.status(400).json({message : err.message});

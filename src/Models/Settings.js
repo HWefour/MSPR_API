@@ -2,28 +2,28 @@ const knex = require("../Config/Knex");
 
 async function getInfoAccount(id) {
     return knex 
-    .select("*")                             // add the body params
+    .select("*")                             
     .from("users")
     .where('idUser' , id)
 };
 
 async function deleteAccount(id){
     return knex 
-    .delete("*")                             // add the body params
+    .delete("*")                            
     .from("users")
-    .where("idUser" , id)
+    .where("idUser" , id).del()
 };
 
-async function editInfoAccount(id){
+async function editInfoAccount(id , acc){
     return knex 
     .update(
         "firstName",
-        "lastName",                           // add the body params
+        "lastName",                          
         "userName",
         "city"
     )
     .from("users")
-    .where("idUser" , id)
+    .where("idUser" , id).update(acc)
 };
 
 // faire requete,pour la deconnexion
