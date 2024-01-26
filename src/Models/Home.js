@@ -19,7 +19,7 @@ async function getAllAdvertisement(){
     .from("advertisement")
     .leftJoin("users", "users.idUser", "=", "advertisement.idUser")
     .orderBy("created_at" , "desc")
-}
+};
 
 async function getAllAdvertisementById(id){
     return knex
