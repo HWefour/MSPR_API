@@ -1,4 +1,6 @@
-const routes = require("express").Router();
-const AdvertisementRoute = require("../Controllers/AdvertisementController");
+const routers = require("express").Router();
+const AdvertisementControlles = require("../Controllers/AdvertisementController");
 
-routes.put("/" , AdvertisementRoute.createAdvertisement);
+routers.put("/" , AdvertisementControlles.createAdvertisement);
+
+module.exports = routers
