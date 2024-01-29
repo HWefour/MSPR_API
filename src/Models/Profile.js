@@ -31,6 +31,8 @@ async function myAdvertisement(id){
         "created_at",
         "updated_at",
         "city",
+        "start_date",
+        "end_date",
         "advertisement.idPlant",
         "advertisement.idUser",
         "description",
