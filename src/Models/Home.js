@@ -10,14 +10,16 @@ async function getAllAdvertisement(){
         "city",
         "advertisement.idPlant",
         "advertisement.idUser",
-        "description",
+        "advertisement.description",
+        "plant.name",
         "firstName",
         "lastName",
         "usersName",
         "bio"
     )
     .from("advertisement")
-    .leftJoin("users", "users.idUser", "=", "advertisement.idUser")
+    .join("users", "users.idUser", "=", "advertisement.idUser")
+    .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
     .orderBy("created_at" , "desc")
 };
 
