@@ -3,7 +3,7 @@ const {createAdvertisement} = require("../Models/Advertisement");
 
 exports.createAdvertisement = async (req , res)=> {
     try {
-        const adv = await createAdvertisement();
+        const adv = await createAdvertisement(req.body);
         res.status(200).json(adv);
     }
     catch(err) {
