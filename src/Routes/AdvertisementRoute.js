@@ -1,6 +1,6 @@
 const routers = require("express").Router();
 const AdvertisementControlles = require("../Controllers/AdvertisementController");
 
-routers.put("/" , AdvertisementControlles.createAdvertisement);
+routers.post("/" , AdvertisementControlles.createAdvertisement);
 
 module.exports = routers
