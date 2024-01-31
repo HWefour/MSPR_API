@@ -1,12 +1,15 @@
 const knex = require("express");
 
-async function signIn(user){
+async function signUp(user) {
     return knex("users").insert(user);
 }
 
-async function logIn(){
-    
+async function logIn() {
+
 }
+const logIn = async (email) => {
+    return await knex('users').where('email', email).first();
+};
 
 
-module.exports = {signIn};
+module.exports = { signUp , logIn };
