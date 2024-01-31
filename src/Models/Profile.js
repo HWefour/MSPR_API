@@ -46,5 +46,13 @@ async function myAdvertisement(id){
     .where("users.idUser" , id)
 };
 
+async function deleteMyAdvertisement(id) {
+    return knex
+    .delete("*")
+    .from("advertisement")
+    .where("advertisment.idAdvertisement" , id)
+    
+}
 
-module.exports ={getProfileDetails , myPlants , myAdvertisement};
+
+module.exports ={getProfileDetails , myPlants , myAdvertisement, deleteMyAdvertisement};

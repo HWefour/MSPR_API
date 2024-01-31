@@ -110,6 +110,13 @@ async function getAllAdvertisementWithInfo(){
     .orderBy("created_at" , "desc")
 };
 
+async function deleteAdvertisement(id){
+    return knex
+    .delete("*")
+    .from("advertisement")
+    .where("idAdvertisement" , id)
+};
+
 module.exports = {
     getAllUsers ,
     getAllAdvertisements, 
@@ -118,5 +125,6 @@ module.exports = {
     createUser,
     deleteUser,
     editUser,
-    getAdvertisementForUser
+    getAdvertisementForUser,
+    deleteAdvertisement
 }

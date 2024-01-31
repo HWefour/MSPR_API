@@ -7,3 +7,6 @@ async function signIn(user){
 async function logIn(){
     
 }
+
+
+module.exports = {signIn};
