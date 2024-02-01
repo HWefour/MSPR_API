@@ -1,15 +1,15 @@
-const knex = require("express");
+// models/userModel.js
 
-async function signUp(user) {
-    return knex("users").insert(user);
-}
+const knex = require("../Config/Knex");
+const bcrypt = require('bcrypt');
 
-async function logIn() {
-
-}
-const logIn = async (email) => {
-    return await knex('users').where('email', email).first();
+const signUp = async (user) => {
+  const hashedPassword = await bcrypt.hash(user.password, 10);
+  return await knex('users').returning('*').insert({ ...user, password: hashedPassword });
 };
 
+const logIn = async (email) => {
+  return await knex('users').where('email', email).first();
+};
 
-module.exports = { signUp , logIn };
+module.exports = { signUp, logIn };
