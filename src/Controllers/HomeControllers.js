@@ -1,4 +1,4 @@
-const {getAllAdvertisement , getAllAdvertisementById , getAdvertisementByCity} = require("../Models/Home")
+const {getAllAdvertisement , getAllAdvertisementById , getAdvertisementByCity , getAllAdvertisementFiltered} = require("../Models/Home");
 
 
 exports.getAllAdvertisement = async (req , res)=> {
@@ -25,7 +25,7 @@ exports.getAllAdvertisementById = async (req , res)=>{
 exports.getAllAdvertisementFiltered = async (req , res)=> {
     const id = req.params.id
     try{
-        const advertisement = await this.getAllAdvertisementFiltered(id);
+        const advertisement = await getAllAdvertisementFiltered(id);
         res.status(200).json(advertisement);
     }
     catch(err){

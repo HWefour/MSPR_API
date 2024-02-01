@@ -78,7 +78,7 @@ async function getAllAdvertisementFiltered(id){
         "advertisement.idAdvertisement",
         "title",
         "created_at",
-        "city",
+        "users.city",
         "advertisement.idPlant",
         "advertisement.idUser",
         "advertisement.description",
@@ -93,7 +93,7 @@ async function getAllAdvertisementFiltered(id){
     .from("advertisement")
     .join("users", "users.idUser", "=", "advertisement.idUser")
     .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
-    .where("idPlant" , id)
+    .where("plant.idPlant" , id)
 };
 
 
