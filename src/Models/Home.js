@@ -6,7 +6,6 @@ async function getAllAdvertisement(){
         "advertisement.idAdvertisement",
         "title",
         "created_at",
-        "updated_at",
         "city",
         "advertisement.idPlant",
         "advertisement.idUser",
