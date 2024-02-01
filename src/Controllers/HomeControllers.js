@@ -34,8 +34,9 @@ exports.getAllAdvertisementFiltered = async (req , res)=> {
 };
 
 exports.getAdvertisementByCity = async (req , res)=> {
+    const city = req.params.city
     try{
-        const advertisement = await getAdvertisementByCity(req.body);
+        const advertisement = await getAdvertisementByCity(city);
         res.status(200).json(advertisement);
     }catch(err) {
         res.status(400).json({message : err.message});
