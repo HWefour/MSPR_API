@@ -46,7 +46,7 @@ async function getAdvertisementByCity(city){
     .from("advertisement")
     .join("users", "users.idUser", "=", "advertisement.idUser")
     .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
-    .where("idAdvertisement" , city)
+    .where("users.city" , city)
     
 }
 
