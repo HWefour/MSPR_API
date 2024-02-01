@@ -29,7 +29,6 @@ async function myAdvertisement(id){
         "advertisement.idAdvertisement",
         "title",
         "created_at",
-        "updated_at",
         "city",
         "start_date",
         "end_date",
