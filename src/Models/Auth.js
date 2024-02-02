@@ -4,7 +4,6 @@ const knex = require("../Config/Knex");
 const bcrypt = require('bcrypt');
 
 async function signUp(user) {
-    // Assurez-vous que user contient également idRole
     return knex("users").insert({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -13,7 +12,7 @@ async function signUp(user) {
         city: user.city,
         bio: user.bio,
         password: user.password,
-        idRole: user.idRole // Assurez-vous que idRole est fourni
+        idRole: user.idRole
     });
 }
 
