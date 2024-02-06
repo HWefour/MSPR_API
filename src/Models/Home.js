@@ -45,7 +45,8 @@ async function getAdvertisementByCity(city) {
         .from("advertisement")
         .join("users", "users.idUser", "=", "advertisement.idUser")
         .join("plant", "advertisement.idPlant", "=", "plant.idPlant")
-        .where("users.city", city);
+        .where("users.city", city)
+        .orderBy("start_date" , "desc")
 }
 
 async function getAllAdvertisementById(id){
