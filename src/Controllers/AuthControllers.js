@@ -30,3 +30,24 @@ exports.logIn = async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 };
+
+exports.back = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await logIn(email);
+        
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+        
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (passwordMatch && user.idRole === 1) { 
+            const token = jwt.sign({ email: user.email, role: user.idRole }, 'your-secret-key');
+            res.json({ token });
+        } else {
+            res.status(401).json({ message: 'Invalid credentials or insufficient privileges' });
+        }
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+};
