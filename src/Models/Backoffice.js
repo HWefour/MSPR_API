@@ -79,6 +79,7 @@ async function getAdvertisementForUser(id){
     .from("advertisement")
     .leftJoin("users", "users.idUser", "=", "advertisement.idUser")
     .where("users.idUser" , id)
+    .orderBy("start_date" , "desc")
 };
 
 async function getAllAdvertisements() {

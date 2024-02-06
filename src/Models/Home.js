@@ -21,7 +21,7 @@ async function getAllAdvertisement(){
     .from("advertisement")
     .join("users", "users.idUser", "=", "advertisement.idUser")
     .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
-    .orderBy("created_at" , "desc")
+    .orderBy("start_dat" , "desc")
 };
 
 async function getAdvertisementByCity(city) {
@@ -71,6 +71,7 @@ async function getAllAdvertisementById(id){
     .join("users", "users.idUser", "=", "advertisement.idUser")
     .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
     .where("idAdvertisement" , id)
+    .orderBy("start_date" , "desc")
 };
 
 async function getAllAdvertisementFiltered(id){
