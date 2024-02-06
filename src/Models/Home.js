@@ -95,6 +95,7 @@ async function getAllAdvertisementFiltered(id){
     .join("users", "users.idUser", "=", "advertisement.idUser")
     .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
     .where("plant.idPlant" , id)
+    .orderBy("start_date" , "desc")
 };
 
 
