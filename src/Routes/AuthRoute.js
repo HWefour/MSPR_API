@@ -5,13 +5,16 @@ const authenticateToken = require("../Middleware/AuthMiddleware");
 routers.post("/signup", AuthControllers.signUp);
 routers.post("/login", AuthControllers.logIn);
 
-routers.get("/protected", authenticateToken, (req, res) => {
-  const userRole = req.user.role;
+/* routers.post("/backoffice", authenticateToken, (req, res) => {
+  const userRole = req.user.idRole;
   if (userRole === 1) {
-    res.json({ message: "Welcome to the backoffice", user: req.user });
+     AuthControllers.logIn;
+      res.json({ message: 'Welcome to the backoffice', user: req.user });
   } else {
-    res.status(403).json({ message: "Access forbidden" });
+      res.status(403).json({ message: 'Access forbidden' });
   }
-});
+}); */
+
 
 module.exports = routers;
+
