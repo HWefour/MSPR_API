@@ -5,12 +5,12 @@ const authenticateToken = (req, res, next) => {
   
     if (!token) return res.status(401).json({ message: 'Access denied' });
   
-    jwt.verify(token, 'your-secret-key', (err, user) => {
-      if (err) return res.status(403).json({ message: 'Invalid token' });
+    jwt.verify(token, 'your-secret-key', (err, decodedToken) => {
+        if (err) return res.status(403).json({ message: 'Invalid token' });
   
-      req.user = user;
-      next();
+        req.user = decodedToken;
+        next();
     });
-  };
-  
-  module.exports =  authenticateToken ;
+};
+
+module.exports = authenticateToken;
