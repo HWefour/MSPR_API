@@ -8,7 +8,6 @@ routers.post("/login", AuthControllers.logIn);
 /* routers.post("/backoffice", authenticateToken, (req, res) => {
   const userRole = req.user.idRole;
   if (userRole === 1) {
-     AuthControllers.logIn;
       res.json({ message: 'Welcome to the backoffice', user: req.user });
   } else {
       res.status(403).json({ message: 'Access forbidden' });
