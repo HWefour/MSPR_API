@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const cors = require("cors"); // Import CORS package
+const cors = require("cors"); 
 
 const HomeRoute = require("./Routes/HomeRoute");
 const ProfileRoute = require("./Routes/ProfileRoutes");
@@ -10,8 +10,7 @@ const BackofficeRoute = require("./Routes/BackofficeRoutes");
 const AdvertisementRoute = require("./Routes/AdvertisementRoute");
 const AuthRoute = require("./Routes/AuthRoute");
 
-// Use CORS middleware (You can customize it as needed)
-app.use(cors()); // This will allow all CORS requests. You can also specify options to restrict domains, methods etc.
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

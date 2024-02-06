@@ -1,5 +1,3 @@
-// models/userModel.js
-
 const knex = require("../Config/Knex");
 const bcrypt = require('bcrypt');
 
