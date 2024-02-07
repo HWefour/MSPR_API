@@ -1,5 +1,5 @@
 const knex = require("../Config/Knex");
-const bcrypt = require('bcrypt');
+
 
 async function signUp(user) {
     return knex("users").insert({

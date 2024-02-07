@@ -22,7 +22,7 @@ app.use("/settings", SettingsRoute);
 app.use("/backoffice", BackofficeRoute);
 app.use("/create_adv" , AdvertisementRoute);
 app.use("/auth" , AuthRoute);
-app.use("job" , JobRoute);
+app.use("/job" , JobRoute);
 app.use("/plant" , PlantRoutes);
 
 // TESTING THE SERVER

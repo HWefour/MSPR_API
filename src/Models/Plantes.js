@@ -1,7 +1,9 @@
-const knex = require("knex");
+const knex = require("../Config/Knex");
 
 async function getAllPlants() {
-    return knex.Client("plant").select("*")
+    return knex
+    .select("*")
+    .from("plant")
 };
 
-module.exports = getAllPlants ; 
+module.exports = {getAllPlants} ; 
