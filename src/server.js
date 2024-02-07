@@ -9,6 +9,7 @@ const SettingsRoute = require("./Routes/SettingsRoute");
 const BackofficeRoute = require("./Routes/BackofficeRoutes");
 const AdvertisementRoute = require("./Routes/AdvertisementRoute");
 const AuthRoute = require("./Routes/AuthRoute");
+const JobRoute = require("./Routes/JobRoute");
 
 app.use(cors());
 
@@ -20,6 +21,7 @@ app.use("/settings", SettingsRoute);
 app.use("/backoffice", BackofficeRoute);
 app.use("/create_adv" , AdvertisementRoute);
 app.use("/auth" , AuthRoute);
+app.use("job" , JobRoute);
 
 // TESTING THE SERVER
 app.get("/test", async (req, res) => {
