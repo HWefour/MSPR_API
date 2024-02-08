@@ -3,36 +3,18 @@ const knex = require("../Config/Knex");
 async function getProfileDetails(id){
     return knex 
     .select(
+        "usersName",
+        "bio",
         "users.idUser",
         "firstName",
         "lastName",
-        "usersName",
         "email",
-        "bio",
-        "users.idRole",
-        "role.name",
-        "role.description",
-        "advertisement.idAdvertisement",
-        "title",
-        "advertisement.description",
-        "start_date",
-        "end_date",
-        "created_at",
         "city",
-        "advertisement.idPlant",
-        "advertisement.idUser",
-        "plant.idPlant",
-        "plant.name as plantName",
-        "plant.description as plantDesc",
-        "image.idAdvertisement",
-        "url",
-        "idImage"
+        "siret",
+        "companyName",
+        "companyNumber"
     )
     .from("users")
-    .join("advertisement" , "advertisement.idUser" , "=" , "users.idUser" )
-    .join("role" , "users.idRole" , "=" , "role.idRole")
-    .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
-    .join("image" , " advertisement.idAdvertisement" , "=" , "image.idAdvertisement")
     .where("users.idUser" , id)
 };
 
