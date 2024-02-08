@@ -8,6 +8,7 @@ async function getAllJobs() {
         "dates",
         "job.idUser",
         "job.idAdvertisement",
+        "job.idUserGardien",
         "firstName",
         "lastName",
         "usersName",
