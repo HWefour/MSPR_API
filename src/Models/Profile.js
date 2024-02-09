@@ -5,7 +5,14 @@ async function getProfileDetails(id){
     .select(
         "usersName",
         "bio",
-        "users.idUser"
+        "users.idUser",
+        "firstName",
+        "lastName",
+        "email",
+        "city",
+        "siret",
+        "companyName",
+        "companyNumber"
     )
     .from("users")
     .where("users.idUser" , id)
