@@ -108,6 +108,29 @@ async function getAllAdvertisementWithInfo(){
     .orderBy("created_at" , "desc")
 };
 
+async function getAllAdvertisementById(id){
+    return knex
+    .select(
+        "advertisement.idAdvertisement",
+        "title",
+        "created_at",
+        "city",
+        "advertisement.idPlant",
+        "advertisement.idUser",
+        "start_date",
+        "end_date",
+        "description",
+        "firstName",
+        "lastName",
+        "usersName",
+        "bio"
+    )
+    .from("advertisement")
+    .leftJoin("users", "users.idUser", "=", "advertisement.idUser")
+    .where("advertisement.idAdvertisement" , id)
+    .orderBy("start_date" , "desc")
+}
+
 async function deleteAdvertisement(id){
     return knex
     .delete("*")
@@ -124,5 +147,6 @@ module.exports = {
     deleteUser,
     editUser,
     getAdvertisementForUser,
-    deleteAdvertisement
+    deleteAdvertisement,
+    getAllAdvertisementById
 }

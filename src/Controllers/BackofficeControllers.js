@@ -8,6 +8,7 @@ const {
   editUser,
   getAdvertisementForUser,
   deleteAdvertisement,
+  getAllAdvertisementById,
 } = require("../Models/Backoffice");
 
 
@@ -99,3 +100,14 @@ exports.getAdvertisementForUser = async (req , res)=> {
         res.status(400).json({message : err.message});
     }
  };
+
+
+ exports.getAllAdvertisementById = async (req , res) => {
+    const id = req.params.id;
+    try {
+        const admin = await getAllAdvertisementById(id);
+        res.status(200).json(admin)
+    } catch (err) {
+        res.status(400).json({message : err.message})
+    }
+ }
