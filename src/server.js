@@ -11,6 +11,7 @@ const AdvertisementRoute = require("./Routes/AdvertisementRoute");
 const AuthRoute = require("./Routes/AuthRoute");
 const JobRoute = require("./Routes/JobRoute");
 const PlantRoutes = require("./Routes/PlantRoutes");
+const imagesRoutes = require('./Routes/ImgRoute');
 
 app.use(cors());
 
@@ -24,6 +25,7 @@ app.use("/create_adv" , AdvertisementRoute);
 app.use("/auth" , AuthRoute);
 app.use("/job" , JobRoute);
 app.use("/plant" , PlantRoutes);
+app.use('/images', imagesRoutes);
 
 // TESTING THE SERVER
 app.get("/test", async (req, res) => {
