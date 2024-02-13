@@ -16,11 +16,13 @@ async function getAllAdvertisement(){
         "firstName",
         "lastName",
         "usersName",
-        "bio"
+        "bio",
+        "url"
     )
     .from("advertisement")
     .join("users", "users.idUser", "=", "advertisement.idUser")
     .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
+    .join("image" , "image.idAdvertisement" , "=" , "advertisement.idAdvertisement" )
     .orderBy("start_dat" , "desc")
 };
 
