@@ -23,7 +23,7 @@ async function getAllAdvertisement(){
     .join("users", "users.idUser", "=", "advertisement.idUser")
     .join("plant" , "advertisement.idPlant" , "=" , "plant.idPlant")
     .join("image" , "image.idAdvertisement" , "=" , "advertisement.idAdvertisement" )
-    .orderBy("start_dat" , "desc")
+    .orderBy("start_date" , "desc")
 };
 
 async function getAdvertisementByCity(city) {
