@@ -1,9 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const uploadMiddleware = require('../Middleware/MulterMiddleware');
+
+const routers = require("express").Router();
+const upload = require('../Middleware/MulterMiddleware');
 const imagesController = require('../Controllers/ImgController');
 
 // POST /images/upload
-router.post('/upload', uploadMiddleware.single('image'), imagesController.uploadImage);
+routers.post('/upload', upload.single('image'), imagesController.uploadImage);
+routers.get('/show/:idAdvertisement' , imagesController.getImagesByAdvertisementId);
 
-module.exports = router;
+module.exports = routers; 

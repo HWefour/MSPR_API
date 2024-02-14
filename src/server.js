@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors"); 
+const path = require('path');
 
 const HomeRoute = require("./Routes/HomeRoute");
 const ProfileRoute = require("./Routes/ProfileRoutes");
@@ -11,7 +12,7 @@ const AdvertisementRoute = require("./Routes/AdvertisementRoute");
 const AuthRoute = require("./Routes/AuthRoute");
 const JobRoute = require("./Routes/JobRoute");
 const PlantRoutes = require("./Routes/PlantRoutes");
-const imagesRoutes = require('./Routes/ImgRoute');
+const imageRoutes = require("./Routes/ImgRoute");
 
 app.use(cors());
 
@@ -25,7 +26,8 @@ app.use("/create_adv" , AdvertisementRoute);
 app.use("/auth" , AuthRoute);
 app.use("/job" , JobRoute);
 app.use("/plant" , PlantRoutes);
-app.use('/images', imagesRoutes);
+app.use("/uploads",  express.static(path.join(__dirname, 'uploads')));
+app.use("/images", imageRoutes);
 
 // TESTING THE SERVER
 app.get("/test", async (req, res) => {
