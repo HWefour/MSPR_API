@@ -11,10 +11,14 @@ exports.getProfileDetails =  async (req , res) => {
 };
 
 exports.myPlants = async (req , res)=> {
-    const id = req.params.id ;
     try {
-        const profilePlant = await myPlants(id);
-        res.status(200).json(profilePlant)
+        const {id} = req.params ;
+        const profilePlants = await myPlants(id);
+        const baseUrl = req.protocol + '://' + req.get('host');
+        imagesWithUrls = profilePlants.map(profilPlant => ({
+            ...profilPlant, url : baseUrl +'/uploads/' + profilPlant.url
+        }))
+        res.status(200).json(imagesWithUrls)
     } catch(err){
         res.status(400).json({message : err.message});
     }
