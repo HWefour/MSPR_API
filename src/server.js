@@ -13,6 +13,7 @@ const AuthRoute = require("./Routes/AuthRoute");
 const JobRoute = require("./Routes/JobRoute");
 const PlantRoutes = require("./Routes/PlantRoutes");
 const imageRoutes = require("./Routes/ImgRoute");
+const TipsRoutes = require("./Routes/TipsRoutes");
 
 app.use(cors());
 
@@ -28,6 +29,7 @@ app.use("/job" , JobRoute);
 app.use("/plant" , PlantRoutes);
 app.use("/uploads",  express.static(path.join(__dirname, 'uploads')));
 app.use("/images", imageRoutes);
+app.use("/tips" , TipsRoutes);
 
 // TESTING THE SERVER
 app.get("/test", async (req, res) => {
