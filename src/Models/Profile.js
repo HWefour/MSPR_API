@@ -21,7 +21,10 @@ async function getProfileDetails(id){
 async function myPlants(id){
     return knex 
     .select(
-        "image.url"
+        "idPlant",
+        "image.url",
+        "plant.name",
+        "plant.description"
     )
     .from("users")
     .join("advertisement" , "users.idUser" ,"=" , "advertisement.idUser")
