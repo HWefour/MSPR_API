@@ -3,6 +3,6 @@ const plantControllers = require("../Controllers/PlantController")
 
 
 routers.get("/" , plantControllers.getAllPlants);
-routers.gez("/:id" , plantControllers.getAllPlants);
+routers.get("/:id" , plantControllers.getAllPlants);
 
 module.exports = routers;
