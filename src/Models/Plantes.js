@@ -15,7 +15,7 @@ async function plantById(id){
         "plant.description"
     )
     .from("plant")
-    .join("plant" , "advertisement.idPlant" ,"=" , "plant.idPlant")
+    .join("advertisement" , "advertisement.idPlant" ,"=" , "plant.idPlant")
     .join("image" , "advertisement.idAdvertisement" , "=" , "image.idAdvertisement")
     .where("plant.idPlant" , id)
 }
