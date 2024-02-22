@@ -10,7 +10,7 @@ async function postTips(tips){
 }
 
 async function tipsPlant(id){
-    return knex("maintenanceTips").select("*").where("idPlant" , id);
+    return knex("maintenanceTip").select("*").where("maintenanceTip.idPlant" , id);
 }
 
 module.exports = { getAllTips , postTips , tipsPlant}

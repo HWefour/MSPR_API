@@ -3,6 +3,6 @@ const TipsController = require("../Controllers/TipsController")
 
 routers.get("/" , TipsController.getAllTips);
 routers.post("/post" , TipsController.postTips);
-routers.get("/postplant/:id")
+routers.get("/postplant/:id" , TipsController.tipsPlant)
 
 module.exports= routers;
