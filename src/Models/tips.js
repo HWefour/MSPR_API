@@ -6,7 +6,7 @@ async function getAllTips(){
 
 
 async function postTips(tips){
-    return knex("maintenaceTip").insert(tips);
+    return knex("maintenanceTip").insert(tips);
 }
 
 async function tipsPlant(id){
