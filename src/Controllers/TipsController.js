@@ -1,4 +1,4 @@
-const {getAllTips , postTips} = require("../Models/tips");
+const {getAllTips , postTips , tipsPlant} = require("../Models/tips");
 const { post } = require("../Routes/PlantRoutes");
 
 
@@ -18,5 +18,15 @@ exports.postTips = async (req , res)=> {
         res.status(200).json(tips)
     } catch (err) {
         res.status(400).json({message : err.message})
+    }
+}
+
+exports.tipsPlant = async (req , res)=> {
+    const id = req.params.id
+    try {
+        const tips = await tipsPlant(id);
+        res.status(200).json(tips)
+    } catch (err) {
+        res.status(400).json({message : err.message});
     }
 }
