@@ -2,22 +2,22 @@ const knex = require("../Config/Knex");
 
 async function getAllPlants() {
     return knex
-    .select("*")
-    .from("plant")
+        .select("*")
+        .from("plant")
 };
 
-async function plantById(id){
-    return knex 
-    .select(
-        "plant.idPlant",
-        "image.url",
-        "plant.name",
-        "plant.description"
-    )
-    .from("plant")
-    .join("advertisement" , "advertisement.idPlant" ,"=" , "plant.idPlant")
-    .join("image" , "advertisement.idAdvertisement" , "=" , "image.idAdvertisement")
-    .where("plant.idPlant" , id)
+async function plantById(id) {
+    return knex
+        .select(
+            "plant.idPlant",
+            "url",
+            "plant.name",
+            "plant.description"
+        )
+        .from("plant")
+        .join("advertisement", "plant.idPlant", "=", "advertisement.idPlant")
+        .join("image", "advertisement.idAdvertisement", "=", "image.idAdvertisement")
+        .where("plant.idPlant", id)
 }
 
-module.exports = {getAllPlants , plantById} ; 
+module.exports = { getAllPlants, plantById }; 
