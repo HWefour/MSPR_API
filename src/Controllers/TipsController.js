@@ -12,9 +12,8 @@ exports.getAllTips = async (req , res)=> {
 }
 
 exports.postTips = async (req , res)=> {
-    const id = req.params.id
     try {
-        const tips = await postTips(id);
+        const tips = await postTips(req.body);
         res.status(200).json(tips)
     } catch (err) {
         res.status(400).json({message : err.message})
