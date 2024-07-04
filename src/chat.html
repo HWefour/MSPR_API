@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="/chat.css">
+    
 </head>
 <body>
     <div id="chat-container">
@@ -22,11 +23,15 @@
             console.log('Connected to the WebSocket server');
         };
 
-        ws.onmessage = (event) => {
+        ws.onmessage = async (event) => {
             const chat = document.getElementById('chat');
             const message = document.createElement('div');
             message.classList.add('message', 'received');
-            message.textContent = event.data;
+
+            // Read Blob as text
+            const text = await event.data.text();
+            message.textContent = text;
+
             chat.appendChild(message);
             chat.scrollTop = chat.scrollHeight;
         };

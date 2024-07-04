@@ -35,14 +35,15 @@ app.use("/plant", PlantRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/images", imageRoutes);
 app.use("/tips", TipsRoutes);
+
 wss.on('connection', (ws) => {
     console.log('New client connected');
 
     ws.on('message', (message) => {
         console.log(`Received message => ${message}`);
-        // Broadcast the message to all connected clients
+        // Broadcast the message to all connected clients except the sender
         wss.clients.forEach(client => {
-            if (client.readyState === WebSocket.OPEN) {
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
                 client.send(message);
             }
         });
