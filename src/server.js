@@ -3,6 +3,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const http = require("http");
+const WebSocket = require("ws");
+
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 
 const HomeRoute = require("./Routes/HomeRoute");
 const ProfileRoute = require("./Routes/ProfileRoutes");
@@ -30,15 +35,28 @@ app.use("/plant", PlantRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/images", imageRoutes);
 app.use("/tips", TipsRoutes);
+wss.on('connection', (ws) => {
+    console.log('New client connected');
 
-// TESTING THE SERVER
-app.get("/test", async (req, res) => {
-  res.status(200).json({ success: true });
+    ws.on('message', (message) => {
+        console.log(`Received message => ${message}`);
+        // Broadcast the message to all connected clients
+        wss.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(message);
+            }
+        });
+    });
+
+    ws.on('close', () => {
+        console.log('Client disconnected');
+    });
 });
 
-// LAUNCHING THE SERVER
-app.listen(1212, () => {
-  console.log("The server is running on the port 1212");
+const PORT = process.env.PORT || 1212;
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = app;
+

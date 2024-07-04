@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/chat.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat"></div>
+        <div id="input-container">
+            <input type="text" id="message" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const ws = new WebSocket('ws://localhost:1212');
+
+        ws.onopen = () => {
+            console.log('Connected to the WebSocket server');
+        };
+
+        ws.onmessage = (event) => {
+            const chat = document.getElementById('chat');
+            const message = document.createElement('div');
+            message.classList.add('message', 'received');
+            message.textContent = event.data;
+            chat.appendChild(message);
+            chat.scrollTop = chat.scrollHeight;
+        };
+
+        ws.onclose = () => {
+            console.log('Disconnected from the WebSocket server');
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('message');
+            const message = input.value;
+            if (message && ws.readyState === WebSocket.OPEN) {
+                ws.send(message);
+
+                const chat = document.getElementById('chat');
+                const messageElem = document.createElement('div');
+                messageElem.classList.add('message', 'sent');
+                messageElem.textContent = message;
+                chat.appendChild(messageElem);
+                chat.scrollTop = chat.scrollHeight;
+
+                input.value = '';
+            } else {
+                alert('WebSocket is not connected. Please wait and try again.');
+            }
+        }
+    </script>
+</body>
+</html>
