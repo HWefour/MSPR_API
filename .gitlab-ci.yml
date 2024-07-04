@@ -1,0 +1,26 @@
+image: node:14
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - npm install
+
+test:
+  stage: test
+  script:
+    - npm test
+
+deploy:
+  stage: deploy
+  script:
+    - docker-compose build
+    - docker-compose up -d
+  environment:
+    name: production
+  only:
+    - main
