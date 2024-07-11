@@ -5,6 +5,8 @@ const cors = require("cors");
 const path = require("path");
 const http = require("http");
 const WebSocket = require("ws");
+const swaggerJsdoc = require("swagger-jsdoc")
+const swaggerUi = require("swagger-ui-express");
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
@@ -53,6 +55,31 @@ wss.on('connection', (ws) => {
         console.log('Client disconnected');
     });
 });
+
+const swaggerDefinition = {
+    openapi: '3.0.0',
+    info: {
+      title: 'Advertisement API',
+      version: '1.0.0',
+      description: 'API pour la gestion des annonces botaniste, l\'authentification des utilisateurs et le backoffice',
+    },
+    servers: [
+      {
+        url: 'http://localhost:1212', // Ajustez l'URL selon votre environnement
+      },
+    ],
+  };
+  
+  const options = {
+    swaggerDefinition,
+    apis: ["./src/Routes/*.js"], // Ajustez le chemin selon votre structure de fichiers
+  };
+  
+  const swaggerSpec = swaggerJsdoc(options);
+  
+  // Utiliser Swagger UI
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 const PORT = process.env.PORT || 1212;
 server.listen(PORT, () => {
